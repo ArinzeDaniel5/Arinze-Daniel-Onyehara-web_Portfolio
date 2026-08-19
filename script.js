@@ -19,6 +19,8 @@ if (menuBtn && navLinks) {
         });
     });
 }
+
+
 const sections = document.querySelectorAll("section");
 const navigationLinks = document.querySelectorAll(".nav-links a");
 
@@ -45,27 +47,28 @@ window.addEventListener("scroll", () => {
         }
     });
 });
+
+
 const contactForm = document.getElementById("contactForm");
 const formMessage = document.getElementById("formMessage");
 
 if (contactForm && formMessage) {
     contactForm.addEventListener("submit", event => {
-        event.preventDefault();
-
         const name = document.getElementById("name").value.trim();
         const email = document.getElementById("email").value.trim();
         const message = document.getElementById("message").value.trim();
 
         if (!name || !email || !message) {
+            event.preventDefault();
             formMessage.textContent = "Please fill in all fields.";
             return;
         }
 
-        formMessage.textContent = "Message ready to be sent.";
-
-        contactForm.reset();
+        formMessage.textContent = "Sending your message...";
     });
 }
+
+
 const revealElements = document.querySelectorAll(
     ".section-heading, .about-grid, .skill-card, .project-card, .service, .contact-container"
 );
@@ -88,5 +91,3 @@ revealElements.forEach(element => {
     element.classList.add("reveal");
     revealObserver.observe(element);
 });
-
-
